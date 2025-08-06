@@ -1,0 +1,9 @@
+.card {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: coral;
+    cursor: grab;
+    user-select: none;
+}
+  
