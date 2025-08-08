@@ -10,14 +10,24 @@
       rooms.push(new Room((innerWidth/100) + ((innerWidth*i)/10), 200, 100, 100, nums[i]));
     }
 
+    function overlapCards(element1, element2){
 
+      const elem1 = element1.getBoundingClientRect();
+      const elem2 = element2.getBoundingClientRect();
+
+      if(elem1.bottom < elem2.top || elem1.left > elem2.right || elem1.top > elem2.bottom || elem1.right < elem2.left){
+        return false;
+      }
+
+      return true; 
+
+    }
 
     function mouseDown(e) {
       currentCard = e.target;
       startX = e.clientX;
       startY = e.clientY;
       
-      console.log(e.target);
 
       fixedX = e.target.style.left; 
       fixedY = e.target.style.top;
@@ -32,19 +42,29 @@
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
 
-      console.log(e + " \n \n" + dx+ ", " + dy);
-
       startX = e.clientX;
       startY = e.clientY;
 
 
       currentCard.style.left = (currentCard.offsetLeft + dx) + 'px';
       currentCard.style.top = (currentCard.offsetTop + dy) + 'px';
+
+      const elements = document.querySelectorAll('div');
+
+      for(var i = 0; i < elements.length; i++){
+        if(elements[i] != currentCard){
+          if(overlapCards(currentCard, elements[i])){
+            currentCard.style.background = "blue";
+          }
+        }
+        else{
+          currentCard.style.background = "pink";
+        }
+      }
     }
 
     function mouseUp() {
 
-      console.log("Replace: " + e.target.innerText);
 
       currentCard.style.left = fixedX; 
       currentCard.style.top = fixedY;
