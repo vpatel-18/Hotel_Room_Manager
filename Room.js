@@ -30,4 +30,15 @@ class Room{
 
     }
 
+
+    swapRoom(other){
+
+        let placeholder = other; 
+
+        other = this.newCard; 
+        this.newCard = placeholder; 
+
+
+    }
+
 }
