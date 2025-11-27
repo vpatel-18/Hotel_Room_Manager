@@ -50,6 +50,12 @@ public class Room{
 // Swap out the room values to swap the data types itself, 
 // Find out how to make Java calls from a Javascript program. 
 
+    public void swapRoom(Room other){
+
+        
+
+    }
+
 
     public void checkOutRoom(){
 
