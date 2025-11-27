@@ -104,10 +104,9 @@
 
       if(swapCard != null){
 
-        alert("Are you sure you want to swap");
-
+        confirm("Are you sure you want to swap");
         //currentCard.swapRoom(swapCard);
-
+        
         swapCard = null; 
       }
 
